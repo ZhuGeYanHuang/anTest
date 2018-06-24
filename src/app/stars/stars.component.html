@@ -1,0 +1,6 @@
+<p>
+  <span *ngFor="let start of starts;let i=index" class="glyphicon glyphicon-star"
+   [class.glyphicon-star-empty]="start" (click)="changeStrat(i+1)"
+  ></span>
+  <span>{{rating}}星</span>
+</p>

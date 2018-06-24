@@ -1,0 +1,29 @@
+<form [formGroup]="formModel" (submit)="onSubmit()" onvalidate>
+  <div class="form-group" (class.has-error)="formModel.hasError('minlength','productTitle')">
+    <label for="productTitle">商品名称：</label>
+    <input type="text" formControlName="productTitle"  id="productTitle" placeholder="商品名称" class="form-control" />
+    <span class="help-block" [class.hidden]="!formModel.hasError('minlength','productTitle')">
+          商品名称长度不能小于4！
+    </span>
+
+  </div>
+
+  <div class="form-group" (class.has-error)="formModel.hasError('price','productPrice')">
+   <label for="productPrice">商品价格：</label>
+    <input type="number" formControlName="productPrice" name="price" id="productPrice" placeholder="商品价格" class="form-control" />
+    <span class="help-block" [class.hidden]="!formModel.hasError('price','productPrice')">
+          价格不能小于0
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="productCategory">商品类别</label>
+    <select id="productCategory" formControlName="productCategory" class="form-control">
+          <option value="-1">全部分类</option>
+          <option *ngFor="let kinds of kind" [value]="kinds">{{kinds}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+     <button type="submit" class="btn btn-primary btn-block">搜索</button>
+  </div>
+</form>
